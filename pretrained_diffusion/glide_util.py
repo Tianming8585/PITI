@@ -1,14 +1,14 @@
 import os
 from typing import Tuple
-from . import dist_util
-import PIL
+
 import numpy as np
+import PIL
 import torch as th
-from .script_util import (
-    create_gaussian_diffusion,
-    create_model_and_diffusion,
-    model_and_diffusion_defaults,
-)
+
+from . import dist_util
+from .script_util import (create_gaussian_diffusion,
+                          create_model_and_diffusion,
+                          model_and_diffusion_defaults)
 
 # Sample from the base model.
 
@@ -26,6 +26,7 @@ def sample(
     upsample_enabled=False,
     upsample_temp=0.997,
     mode = '',
+    noise=None
 ):
 
     eval_diffusion = create_gaussian_diffusion(
@@ -49,6 +50,7 @@ def sample(
     def cfg_model_fn(x_t, ts, **kwargs):
         half = x_t[: len(x_t) // 2]
         combined = th.cat([half, half], dim=0)
+        # print('combined', combined.shape)
         model_out = glide_model(combined, ts, **kwargs)
         eps, rest = model_out[:, :3], model_out[:, 3:]
         cond_eps, uncond_eps = th.split(eps, len(eps) // 2, dim=0)
@@ -58,7 +60,7 @@ def sample(
         eps = th.cat([half_eps, half_eps], dim=0)
         return th.cat([eps, rest], dim=1)
 
-
+    # print('upsample_enabled', upsample_enabled)
     if upsample_enabled:
         model_kwargs['low_res'] = prompt['low_res'].to(dist_util.dev())
         noise = th.randn((batch_size, 3, side_y, side_x), device=device) * upsample_temp
@@ -78,8 +80,13 @@ def sample(
 
     else:
         model_fn = cfg_model_fn # so we use CFG for the base model.
-        noise = th.randn((batch_size, 3, side_y, side_x), device=device) 
+        if noise is None:
+            noise = th.randn((batch_size, 3, side_y, side_x), device=device) 
+            # print('noise1', noise.size())
+        else:
+            noise = noise.to(device)
         noise = th.cat([noise, noise], 0)  
+        # print('noise2', noise.size())
         samples = eval_diffusion.p_sample_loop(
             model_fn,
             (full_batch_size, 3, side_y, side_x),  # only thing that's changed

@@ -12,8 +12,9 @@ from subprocess import call
 import numpy as np
 import torch as th
 
+from .losses import discretized_gaussian_log_likelihood, normal_kl
 from .nn import mean_flat
-from .losses import normal_kl, discretized_gaussian_log_likelihood
+
 
 def _warmup_beta(beta_start, beta_end, num_diffusion_timesteps, warmup_frac):
     betas = beta_end * np.ones(num_diffusion_timesteps, dtype=np.float64)
@@ -296,6 +297,7 @@ class GaussianDiffusion:
 
         B, C = x.shape[:2]
         assert t.shape == (B,)
+        # print('x0.0', x.shape)
         model_output = model(x, self._scale_timesteps(t), **model_kwargs)
 
         if self.model_var_type in [ModelVarType.LEARNED, ModelVarType.LEARNED_RANGE]:

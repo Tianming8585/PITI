@@ -1,28 +1,24 @@
 """
 Train a diffusion model on images.
 """
-import gradio as gr
 import argparse
-from einops import rearrange
-from pretrained_diffusion import dist_util, logger
-from torchvision.utils import make_grid
-from pretrained_diffusion.script_util import (
-    model_and_diffusion_defaults,
-    create_model_and_diffusion,
-    args_to_dict,
-    add_dict_to_argparser,
-)
-from pretrained_diffusion.image_datasets_sketch import get_tensor
-from pretrained_diffusion.train_util import TrainLoop
-from pretrained_diffusion.glide_util import sample 
-import torch
-import os
-import torch as th
-import torchvision.utils as tvu
-import torch.distributed as dist
-from PIL import Image
+
 import cv2
+import gradio as gr
 import numpy as np
+import torch
+import torch as th
+from einops import rearrange
+from PIL import Image
+from pretrained_diffusion import dist_util
+from pretrained_diffusion.glide_util import sample
+from pretrained_diffusion.image_datasets_sketch import get_tensor
+from pretrained_diffusion.script_util import (add_dict_to_argparser,
+                                              args_to_dict,
+                                              create_model_and_diffusion,
+                                              model_and_diffusion_defaults)
+from torchvision.utils import make_grid
+
 
 def run(image, mode, sample_c=1.3,  num_samples=3, sample_step=100):
     parser, parser_up = create_argparser()
@@ -40,7 +36,7 @@ def run(image, mode, sample_c=1.3,  num_samples=3, sample_step=100):
     elif mode == 'mask':
         args.mode = 'coco'
         args_up.mode = 'coco'
-        args.model_path = './ckpt/base_mask.pt'
+        args.model_path = './logs/coco-mask/coco-64-stage2-decoder/checkpoints/ema_0.9999_015000.pt'
         args.sr_model_path = './ckpt/upsample_mask.pt'
 
 
@@ -57,14 +53,14 @@ def run(image, mode, sample_c=1.3,  num_samples=3, sample_step=100):
  
 
     if  args.model_path:
-        print('loading model')
+        print('loading model', args.model_path)
         model_ckpt = dist_util.load_state_dict(args.model_path, map_location="cpu")
 
         model.load_state_dict(
             model_ckpt   , strict=True )
 
     if  args.sr_model_path:
-        print('loading sr model')
+        print('loading sr model', args.sr_model_path)
         model_ckpt2 = dist_util.load_state_dict(args.sr_model_path, map_location="cpu")
 
         model_up.load_state_dict(
@@ -223,5 +219,5 @@ demo = gr.Interface(fn=run, inputs=[
     title="Generate images from sketches with PITI",
     description="<div>By uploading a sketch map or a semantic map and pressing submit, you can generate images based on your input.</div>")
    
-demo.launch(enable_queue=True)
+# demo.launch(enable_queue=True, server_name='0.0.0.0', server_port=8830)
  

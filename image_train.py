@@ -2,19 +2,20 @@
 Train a diffusion model on images.
 """
 import argparse
+
+import torch
 import torch.distributed as dist
 from pretrained_diffusion import dist_util, logger
+from pretrained_diffusion.image_datasets_depth import load_data_depth
 from pretrained_diffusion.image_datasets_mask import load_data_mask
 from pretrained_diffusion.image_datasets_sketch import load_data_sketch
-from pretrained_diffusion.image_datasets_depth import load_data_depth
 from pretrained_diffusion.resample import create_named_schedule_sampler
-from pretrained_diffusion.script_util import (
-    model_and_diffusion_defaults,
-    create_model_and_diffusion,
-    args_to_dict,
-    add_dict_to_argparser,)
+from pretrained_diffusion.script_util import (add_dict_to_argparser,
+                                              args_to_dict,
+                                              create_model_and_diffusion,
+                                              model_and_diffusion_defaults)
 from pretrained_diffusion.train_util import TrainLoop
-import torch
+
 
 def main():
     args = create_argparser().parse_args()
@@ -172,7 +173,7 @@ def create_argparser():
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values
         log_interval=200,
-        save_interval=20000,
+        save_interval=1000,
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,

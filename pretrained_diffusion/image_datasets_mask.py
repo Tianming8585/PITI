@@ -1,16 +1,19 @@
 import math
-import random
-
-from PIL import Image
-import blobfile as bf
-from mpi4py import MPI
-import numpy as np
-from torch.utils.data import DataLoader, Dataset
 import os
-import torchvision.transforms as transforms
-import torch as th
-from .degradation.bsrgan_light import degradation_bsrgan_variant as degradation_fn_bsr_light
+import random
 from functools import partial
+
+import blobfile as bf
+import numpy as np
+import torch as th
+import torchvision.transforms as transforms
+from mpi4py import MPI
+from PIL import Image
+from torch.utils.data import DataLoader, Dataset
+
+from .degradation.bsrgan_light import \
+    degradation_bsrgan_variant as degradation_fn_bsr_light
+
 
 def load_data_mask(
     *,
@@ -73,11 +76,11 @@ def load_data_mask(
     )
     if deterministic:
         loader = DataLoader(
-            dataset, batch_size=batch_size, shuffle=False, num_workers=8, drop_last=True, pin_memory=False
+            dataset, batch_size=batch_size, shuffle=False, num_workers=1, drop_last=True, pin_memory=False
         )
     else:
         loader = DataLoader(
-            dataset, batch_size=batch_size, shuffle=True, num_workers=8, drop_last=True, pin_memory=False
+            dataset, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=True, pin_memory=False
         )
     while True:
         yield from loader
@@ -124,13 +127,14 @@ class ImageDataset(Dataset):
         return  len(self.local_images)
 
     def __getitem__(self, idx):
-        path = self.local_images[idx]
+        path = self.local_images[idx]# + '.jpg'
+        # print('path', path)
         with bf.BlobFile(path, "rb") as f:
             pil_image = Image.open(f)
             pil_image.load()
         pil_image = pil_image.convert("RGB")
 
-        path_ =  self.local_images[idx][:-4]
+        path_ = path[:-4]
         if self.mode == 'ade20k':
             path2 = path_+'_seg.png'
             path3 = None
@@ -138,7 +142,7 @@ class ImageDataset(Dataset):
             path2 = path_.replace('_img', '_label_color') + '.png'
             path3 = path_.replace('_img', '_inst') + '.png'
 
-
+        # print('path2', path2)
         with bf.BlobFile(path2, "rb") as f:
             pil_image2 = Image.open(f)
             pil_image2.load()
