@@ -4998,3 +4998,4 @@
 /mnt/blob/dataset/COCO-STUFF/val_img/000000581482.jpg
 /mnt/blob/dataset/COCO-STUFF/val_img/000000581615.jpg
 /mnt/blob/dataset/COCO-STUFF/val_img/000000581781.jpg
+
