@@ -5,7 +5,7 @@
 - 作業系統：Ubuntu
 - 語言：Python
 - 套件（函式庫）: PyTorch、NumPy、OpenCV、mpi4py、dlib
-- 預訓練模型：PITI
+- 預訓練模型：[PITI](https://hkustconnect-my.sharepoint.com/:f:/g/personal/tfwang_connect_ust_hk/Ej0KKEFuje5NnYwaR3wob7YBsca1mBoozuCwCrzc16ra_g?e=COucC2)
 - 額外資料集：無
 
 ## 演算法與模型架構
