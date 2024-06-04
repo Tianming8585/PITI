@@ -1,8 +1,8 @@
 # Utilizing PITI for Generating Autonomous UAV Images in Natural Environments.
 
 - Competition Name: [Generative AI For Autonomous Uav Navigation In Natural Environments](https://tbrain.trendmicro.com.tw/Competitions/Details/34)
-- Team Name：TEAM_5101
-- Team Members：[@Tsao666](https://github.com/Tsao666), [me](https://github.com/Tianming8585)
+- Team Name: TEAM_5101
+- Team Members: [@Tsao666](https://github.com/Tsao666), [me](https://github.com/Tianming8585)
 - Final Competition Results:
 
   | Testing Dataset | FID Score | Rank |
