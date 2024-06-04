@@ -14,9 +14,9 @@
 
 - Key Technologies:
 
-  1. [PITI](https://github.com/Tianming8585/PITI) By [me](https://github.com/Tianming8585)
-  1. [DP_GAN](https://github.com/Tsao666/DP_GAN) By [@Tsao666](https://github.com/Tsao666)
-  1. [Ensemble](<[https://github.com/Tsao666/DP_GAN](https://github.com/Tsao666/DP_GAN/blob/main/ensemble.md)>) By [@Tsao666](https://github.com/Tsao666) and [me](https://github.com/Tianming8585)
+  1. [PITI](https://github.com/Tianming8585/PITI) (By [me](https://github.com/Tianming8585))
+  1. [DP_GAN](https://github.com/Tsao666/DP_GAN) (By [@Tsao666](https://github.com/Tsao666))
+  1. [Ensemble](https://github.com/Tsao666/DP_GAN/blob/main/ensemble.md) (By [@Tsao666](https://github.com/Tsao666) and [me](https://github.com/Tianming8585))
 
 ---
 
