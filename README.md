@@ -1,8 +1,8 @@
 # Utilizing PITI for Generating Autonomous UAV Images in Natural Environments.
 
-- Competition Name: [Generative AI For Autonomous Uav Navigation In Natural Environments](https://tbrain.trendmicro.com.tw/Competitions/Details/34)
+- Competition Name: [Generative-AI Navigation Information Competition for UAV Reconnaissance in Natural Environments I：Image Data Generation](https://tbrain.trendmicro.com.tw/Competitions/Details/34)
 - Team Name: TEAM_5101
-- Team Members: [@Tsao666](https://github.com/Tsao666), [me](https://github.com/Tianming8585)
+- Team Members: [@Tsao666](https://github.com/Tsao666), [Me](https://github.com/Tianming8585)
 - Final Competition Results:
 
   | Testing Dataset | FID Score | Rank |
@@ -14,9 +14,9 @@
 
 - Key Technologies:
 
-  1. [PITI](https://github.com/Tianming8585/PITI) (By [me](https://github.com/Tianming8585))
+  1. [PITI](https://github.com/Tianming8585/PITI) (By [Me](https://github.com/Tianming8585))
   1. [DP_GAN](https://github.com/Tsao666/DP_GAN) (By [@Tsao666](https://github.com/Tsao666))
-  1. [Ensemble](https://github.com/Tsao666/DP_GAN/blob/main/ensemble.md) (By [@Tsao666](https://github.com/Tsao666) and [me](https://github.com/Tianming8585))
+  1. [Ensemble](https://github.com/Tsao666/DP_GAN/blob/main/ensemble.md) (By [@Tsao666](https://github.com/Tsao666) and [Me](https://github.com/Tianming8585))
 
 ---
 
