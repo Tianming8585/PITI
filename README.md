@@ -104,13 +104,35 @@ If you find this work useful for your research, please cite:
 
 ```
 @misc{
- title = {Utilizing PITI for Generating Autonomous UAV Images in Natural Environments.},
+  title  = {Utilizing PITI for Generating Autonomous UAV Images in Natural Environments},
   author = {Zhe-Yu Guo},
-  url={https://github.com/Tianming8585/PITI},
-  year = {2024},
+  url    = {https://github.com/Tianming8585/PITI},
+  year   = {2024}
 }
 ```
 
-## Acknowledgement
+## Acknowledgement & References
 
 Thanks for [PITI](https://github.com/PITI-Synthesis/PITI) for sharing their code and pretrained models.
+
+- [PITI-Synthesis/PITI](https://github.com/PITI-Synthesis/PITI)
+
+  ```
+  @article{wang2022pretraining,
+   title = {Pretraining is All You Need for Image-to-Image Translation},
+    author = {Wang, Tengfei and Zhang, Ting and Zhang, Bo and Ouyang, Hao and Chen, Dong and Chen, Qifeng and Wen, Fang},
+    journal={arXiv:2205.12952},
+    year = {2022},
+  }
+  ```
+
+- [Tsao666/DP_GAN](https://github.com/Tsao666/DP_GAN)
+
+  ```
+  @misc{
+    title  = {Apply DP-GAN on Generative-AI Navigation Information Competition for UAV Reconnaissance in Natural Environments},
+    author = {Wei-Chun Tsao},
+    url    = {https://github.com/Tsao666/DP_GAN},
+    year   = {2024}
+  }
+  ```

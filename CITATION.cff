@@ -4,7 +4,7 @@ abstract: This repository contains the implementation of PITI, a approach for im
 authors:
   - family-names: Guo
     given-names: Zhe-Yu
-title: Utilizing PITI for Generating Autonomous UAV Images in Natural Environments.
+title: Utilizing PITI for Generating Autonomous UAV Images in Natural Environments
 url: https://github.com/Tianming8585/PITI
 version: 1.0.0
 date-released: "2024-06-04"
@@ -32,3 +32,10 @@ references:
     journal: "arXiv:2205.12952"
     year: 2022
     type: article
+  - authors:
+      - family-names: Tsao
+        given-names: Wei-Chun
+    title: "Apply DP-GAN on Generative-AI Navigation Information Competition for UAV Reconnaissance in Natural Environments"
+    url: https://github.com/Tsao666/DP_GAN
+    year: 2024
+    type: misc
