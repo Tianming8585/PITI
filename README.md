@@ -80,7 +80,7 @@ Download the following pretrained models into `./ckpt/`.
 
 ### Preprocess
 
-Run the notebook `preprocess.ipynb` to preprocess training dataset.
+Run the notebook [preprocess.ipynb](preprocess.ipynb) to preprocess training dataset.
 
 ### Start Training
 
@@ -88,7 +88,7 @@ Taking mask-to-image synthesis as an example: (sketch-to-image is the same)
 
 #### Finetune the Base Model
 
-Modify `mask_finetune_base.sh` and run:
+Modify [mask_finetune_base.sh](mask_finetune_base.sh) and run:
 
 ```
 bash mask_finetune_base.sh
@@ -96,7 +96,7 @@ bash mask_finetune_base.sh
 
 ### Inference
 
-Run the following notebook `./generate-example.ipynb` to generate output images.
+Run the notebook [generate-example.ipynb](generate-example.ipynb) to generate output images.
 
 ## Citation
 
