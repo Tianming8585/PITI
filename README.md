@@ -1,8 +1,27 @@
-# PITI: Pretraining is All You Need for Image-to-Image Translation
+# Utilizing PITI for Generating Autonomous UAV Images in Natural Environments.
 
-Official PyTorch implementation
+- Competition Name: [Generative AI For Autonomous Uav Navigation In Natural Environments](https://tbrain.trendmicro.com.tw/Competitions/Details/34)
+- Team Name：TEAM_5101
+- Team Members：[@Tsao666](https://github.com/Tsao666), [me](https://github.com/Tianming8585)
+- Final Competition Results:
 
-> Pretraining is All You Need for Image-to-Image Translation  
+  | Testing Dataset | FID Score | Rank |
+  | :-------------- | :-------- | :--- |
+  | Private         | 89.09644  | 4    |
+  | Public          | 88.878136 | 6    |
+
+- [Competition Report](./report.md)
+
+- Key Technologies:
+
+  1. [PITI](https://github.com/Tianming8585/PITI) By [me](https://github.com/Tianming8585)
+  1. [DP_GAN](https://github.com/Tsao666/DP_GAN) By [@Tsao666](https://github.com/Tsao666)
+  1. [Ensemble](<[https://github.com/Tsao666/DP_GAN](https://github.com/Tsao666/DP_GAN/blob/main/ensemble.md)>) By [@Tsao666](https://github.com/Tsao666) and [me](https://github.com/Tianming8585)
+
+---
+
+# Pretraining is All You Need for Image-to-Image Translation
+
 > [Tengfei Wang](https://tengfei-wang.github.io/), [Ting Zhang](https://www.microsoft.com/en-us/research/people/tinzhan/), [Bo Zhang](https://bo-zhang.me/), [Hao Ouyang](https://ken-ouyang.github.io/), [Dong Chen](http://www.dongchen.pro/), [Qifeng Chen](https://cqf.io/), [Fang Wen](https://www.microsoft.com/en-us/research/people/fangwen/)  
 > 2022
 
@@ -10,8 +29,7 @@ Official PyTorch implementation
 
 ## Introduction
 
-We present a simple and universal framework that brings the power of the pretraining to various
-image-to-image translation tasks. You may try our [online demo](https://huggingface.co/spaces/tfwang/PITI-Synthesis) if interested.
+We present a simple and universal framework that brings the power of the pretraining to various image-to-image translation tasks.
 
 Diverse samples synthesized by our approach.  
 <img src="figure/diverse.jpg" height="380px"/>
@@ -39,7 +57,7 @@ pip install gradio
 
 ### Pretrained Models
 
-Please download our pre-trained models for both `Base` model and `Upsample` model, and put them in `./ckpt`.
+Please download pre-trained models for both `Base` model and `Upsample` model, and put them in `./ckpt`.
 | Model | Task | Dataset
 | :--- | :---------- | :----------
 |[Base-64x64](https://hkustconnect-my.sharepoint.com/:u:/g/personal/tfwang_connect_ust_hk/EVslpwvzHJxFviyd3bw6KSEBWQ9B9Oqd5xUlemo4BNcHpQ?e=F5450q) | Mask-to-Image | Trained on COCO.
@@ -53,8 +71,12 @@ If you fail to access to these links, you may alternatively find our pretrained 
 
 ### Preparation
 
-1. Download and preprocess datasets. For COCO dataset, download the images and annotations from the [COCO webpage](https://cocodataset.org/#home). Run `./preprocess/preprocess_mask.py` or `./preprocess/preprocess_sketch.py`
-2. Download pretrained models by `python preprocess/download.py `.
+Download the following pretrained models into `./ckpt/`.
+
+| Model                                                                                                                                                  | Task          | Dataset          |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ | :--------------- |
+| [Base-64x64](https://hkustconnect-my.sharepoint.com/:u:/g/personal/tfwang_connect_ust_hk/EVslpwvzHJxFviyd3bw6KSEBWQ9B9Oqd5xUlemo4BNcHpQ?e=F5450q)      | Mask-to-Image | Trained on COCO. |
+| [Upsample-64-256](https://hkustconnect-my.sharepoint.com/:u:/g/personal/tfwang_connect_ust_hk/ERPFM88nCR5Gna_i81cB_X4BgMyvkVE3uMX7R_w-LcSAEQ?e=EmL4fs) | Mask-to-Image | Trained on COCO. |
 
 ### Preprocess
 
@@ -81,11 +103,11 @@ Run the following notebook `./generate-example.ipynb` to generate output images.
 If you find this work useful for your research, please cite:
 
 ```
-@article{wang2022pretraining,
- title = {Pretraining is All You Need for Image-to-Image Translation},
-  author = {Wang, Tengfei and Zhang, Ting and Zhang, Bo and Ouyang, Hao and Chen, Dong and Chen, Qifeng and Wen, Fang},
-  journal={arXiv:2205.12952},
-  year = {2022},
+@misc{
+ title = {Utilizing PITI for Generating Autonomous UAV Images in Natural Environments.},
+  author = {Zhe-Yu Guo},
+  url={https://github.com/Tianming8585/PITI},
+  year = {2024},
 }
 ```
 
